@@ -1,9 +1,9 @@
 package boardGame;
 
 import boardGame.Piece;
+import boardGame.Position;
 
 public class Board {
-
   private int rows;
   private int colunm;
   private Piece[][] pieces;
@@ -30,4 +30,16 @@ public class Board {
     this.colunm = colunm;
   }
 
+  public Piece piece(int row, int colunm) {
+    return pieces[row][colunm];
+  }
+
+  public Piece piece(Position position) {
+    return pieces[position.getRow()][position.getColunm()];
+  }
+
+  public void placePiece(Piece piece, Position position) {
+    pieces[position.getRow()][position.getColunm()] = piece;
+    piece.position = position;
+  }
 }
