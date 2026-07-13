@@ -4,7 +4,7 @@ import chess.chessPiece;
 
 public class UI {
   public static void printBoard(chessPiece[][] pieces) {
-    for (int i = 0; i < pieces.length; i++) {
+    for (int i = 0; i < pieces[0].length; i++) {
       System.out.print(8 - i + " ");
       for (int j = 0; j < pieces.length; j++) {
         printPiece(pieces[i][j]);

@@ -1,12 +1,9 @@
 package chess;
 
-import chess.chessPiece;
 import chess.pieces.Rook;
-import chess.Color;
 import chess.pieces.King;
 
 import boardGame.Board;
-import boardGame.Position;
 
 public class chessMatch {
   private Board board;
@@ -17,9 +14,9 @@ public class chessMatch {
   }
 
   public chessPiece[][] getPieces() {
-    chessPiece[][] matriz = new chessPiece[board.getRows()][board.getColunm()];
+    chessPiece[][] matriz = new chessPiece[board.getRows()][board.getColumn()];
     for (int i = 0; i < board.getRows(); i++) {
-      for (int j = 0; j < board.getColunm(); j++) {
+      for (int j = 0; j < board.getColumn(); j++) {
         matriz[i][j] = (chessPiece) board.piece(i, j);
       }
     }
@@ -27,9 +24,12 @@ public class chessMatch {
   }
 
   private void initialSetup() {
-    board.placePiece(new Rook(board, Color.BLACK), new Position(1, 2));
-    board.placePiece(new King(board, Color.WHITE), new Position(4, 0));
-    board.placePiece(new King(board, Color.BLACK), new Position(4, 7));
+    placeNewPiece('b', 6, new Rook(board, Color.WHITE));
+    placeNewPiece('e', 8, new King(board, Color.BLACK));
+    placeNewPiece('e', 1, new King(board, Color.WHITE));
   }
 
+  private void placeNewPiece(char column, int row, chessPiece piece) {
+    board.placePiece(piece, new ChessPosition(column, row).toPosition());
+  }
 }
