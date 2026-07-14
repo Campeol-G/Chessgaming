@@ -4,7 +4,7 @@ import chess.Color;
 import boardGame.Piece;
 import boardGame.Board;
 
-public class chessPiece extends Piece {
+public abstract class chessPiece extends Piece {
   private Color color;
 
   public chessPiece(Board board, Color color) {
