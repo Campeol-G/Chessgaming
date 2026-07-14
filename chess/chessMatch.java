@@ -1,6 +1,7 @@
 package chess;
 
 import chess.pieces.Rook;
+import chess.ChessPosition;
 import chess.chessPiece;
 import chess.pieces.King;
 import boardGame.Piece;
@@ -48,6 +49,12 @@ public class chessMatch {
     validateTargetPosition(source, target);
     Piece capturedPiece = makeMove(source, target);
     return (chessPiece) capturedPiece;
+  }
+
+  public boolean[][] possibleMoves(ChessPosition sourcePosition) {
+    Position p = sourcePosition.toPosition();
+    validateSourcePosition(p);
+    return board.piece(p).possibleMoves();
   }
 
   private void validateTargetPosition(Position source1, Position target1) {
