@@ -1,6 +1,7 @@
 package chess;
 
 import chess.pieces.Rook;
+import chess.chessPiece;
 import chess.pieces.King;
 import boardGame.Piece;
 import boardGame.Board;
@@ -44,8 +45,15 @@ public class chessMatch {
     Position source = sourcePosition.toPosition();
     Position target = targetPosition.toPosition();
     validateSourcePosition(source);
+    validateTargetPosition(source, target);
     Piece capturedPiece = makeMove(source, target);
     return (chessPiece) capturedPiece;
+  }
+
+  private void validateTargetPosition(Position source1, Position target1) {
+    if (!board.piece(source1).possibleMove(target1)) {
+      throw new ChessException("Invalid move! The chosen piece can't move to target position.");
+    }
   }
 
   private void validateSourcePosition(Position position) {
