@@ -5,14 +5,19 @@ import chess.ChessPosition;
 import chess.chessPiece;
 import chess.pieces.King;
 import boardGame.Piece;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import boardGame.Board;
 import boardGame.Position;
 
 public class chessMatch {
   private Board board;
   private Color currentPlayer;
-
   private int turn;
+  private List<Piece> piecesOnTheBoard = new ArrayList<>();
+  private List<Piece> capturedPieces = new ArrayList<>();
 
   public chessMatch() {
     board = new Board(8, 8);
@@ -98,10 +103,15 @@ public class chessMatch {
     Piece p = board.removePiece(source);
     Piece capturedPiece = board.removePiece(target);
     board.placePiece(p, target);
+    if (capturedPiece != null) {
+      piecesOnTheBoard.remove(capturedPiece);
+      capturedPieces.add(capturedPiece);
+    }
     return capturedPiece;
   }
 
   private void placeNewPiece(char column, int row, chessPiece piece) {
     board.placePiece(piece, new ChessPosition(column, row).toPosition());
+    piecesOnTheBoard.add(piece);
   }
 }
