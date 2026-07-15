@@ -10,9 +10,14 @@ import boardGame.Position;
 
 public class chessMatch {
   private Board board;
+  private Color currentPlayer;
+
+  private int turn;
 
   public chessMatch() {
     board = new Board(8, 8);
+    turn = 1;
+    currentPlayer = Color.WHITE;
     initialSetup();
   }
 
@@ -24,6 +29,14 @@ public class chessMatch {
       }
     }
     return matriz;
+  }
+
+  public Color getCurrentPlayer() {
+    return currentPlayer;
+  }
+
+  public int getTurn() {
+    return turn;
   }
 
   private void initialSetup() {
@@ -48,6 +61,7 @@ public class chessMatch {
     validateSourcePosition(source);
     validateTargetPosition(source, target);
     Piece capturedPiece = makeMove(source, target);
+    nextTurn();
     return (chessPiece) capturedPiece;
   }
 
@@ -70,6 +84,14 @@ public class chessMatch {
     if (!board.piece(position).isThereAnyPossibleMove()) {
       throw new ChessException("There is no possible moves for the chosen piece.");
     }
+    if (currentPlayer != ((chessPiece) board.piece(position)).getColor()) {
+      throw new ChessException("The chosen piece is not yours");
+    }
+  }
+
+  private void nextTurn() {
+    turn++;
+    currentPlayer = (currentPlayer == Color.WHITE) ? Color.BLACK : Color.WHITE;
   }
 
   private Piece makeMove(Position source, Position target) {
