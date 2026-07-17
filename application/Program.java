@@ -18,7 +18,8 @@ public class Program {
     Scanner sc = new Scanner(System.in);
     chessMatch cm = new chessMatch();
     List<chessPiece> capPieces = new ArrayList<>();
-    while (true) {
+
+    while (!cm.getCheckMate()) {
       try {
         UI.clearScreen();
         UI.printMatch(cm, capPieces);
@@ -43,6 +44,8 @@ public class Program {
         System.out.println(e.getMessage());
         sc.nextLine();
       }
+      UI.clearScreen();
+      UI.printMatch(cm, capPieces);
     }
   }
 }
