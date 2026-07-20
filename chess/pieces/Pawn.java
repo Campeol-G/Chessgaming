@@ -49,11 +49,11 @@ public class Pawn extends chessPiece {
         Position left = new Position(position.getRow(), position.getColumn() - 1);
         Position right = new Position(position.getRow(), position.getColumn() + 1);
         if (getBoard().positionExists(left) && isThereOpponentPiece(left)
-            && getBoard().piece(left) == cm.getEnPassantVunerable()) {
+            && getBoard().piece(left) == cm.getEnPassantVulnerable()) {
           mat[left.getRow() - 1][left.getColumn()] = true;
         }
         if (getBoard().positionExists(right) && isThereOpponentPiece(right)
-            && getBoard().piece(right) == cm.getEnPassantVunerable()) {
+            && getBoard().piece(right) == cm.getEnPassantVulnerable()) {
           mat[right.getRow() - 1][right.getColumn()] = true;
         }
 
@@ -86,11 +86,11 @@ public class Pawn extends chessPiece {
         Position left = new Position(position.getRow(), position.getColumn() - 1);
         Position right = new Position(position.getRow(), position.getColumn() + 1);
         if (getBoard().positionExists(left) && isThereOpponentPiece(left)
-            && getBoard().piece(left) == cm.getEnPassantVunerable()) {
+            && getBoard().piece(left) == cm.getEnPassantVulnerable()) {
           mat[left.getRow() + 1][left.getColumn()] = true;
         }
         if (getBoard().positionExists(right) && isThereOpponentPiece(right)
-            && getBoard().piece(right) == cm.getEnPassantVunerable()) {
+            && getBoard().piece(right) == cm.getEnPassantVulnerable()) {
           mat[right.getRow() + 1][right.getColumn()] = true;
         }
 

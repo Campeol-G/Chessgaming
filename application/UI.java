@@ -68,9 +68,9 @@ public class UI {
   }
 
   public static void printBoard(chessPiece[][] pieces) {
-    for (int i = 0; i < pieces[0].length; i++) {
-      System.out.print(8 - i + " ");
-      for (int j = 0; j < pieces.length; j++) {
+    for (int i = 0; i < pieces.length; i++) {
+      System.out.print((8 - i) + " ");
+      for (int j = 0; j < pieces[i].length; j++) {
         printPiece(pieces[i][j], false);
         System.out.print(" ");
       }
@@ -81,9 +81,9 @@ public class UI {
   }
 
   public static void printBoard(chessPiece[][] pieces, boolean[][] possibleMoves) {
-    for (int i = 0; i < pieces[0].length; i++) {
-      System.out.print(8 - i + " ");
-      for (int j = 0; j < pieces.length; j++) {
+    for (int i = 0; i < pieces.length; i++) {
+      System.out.print((8 - i) + " ");
+      for (int j = 0; j < pieces[i].length; j++) {
         printPiece(pieces[i][j], possibleMoves[i][j]);
         System.out.print(" ");
       }
